@@ -38,5 +38,25 @@
         </div>
     </div>
 
+<script>
+async function getMessage() {
+    const result = document.getElementById("result");
+
+    try {
+        const response = await fetch("/hello");
+
+        if (!response.ok) {
+            throw new Error("Server error");
+        }
+
+        const data = await response.json();
+        result.textContent = data.message;
+
+    } catch (error) {
+        result.textContent = "Unable to connect to Python.";
+    }
+}
+</script>
+
 </body>
 </html>
